@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include<math.h>
+#include<stdlib.h>
 #include "graphics.h"
-
 char canvas[ROWS][COLS];
 
 void initializeCanvas()
@@ -61,6 +62,40 @@ void drawLine(int x1, int y1, int x2, int y2)
         for(i = y1; i <= y2; i++)
         {
             canvas[i][x1] = '*';
+        }
+    }
+}
+void drawTriangle(int x, int y, int height)
+{
+    int i, j;
+
+    for(i = 0; i < height; i++)
+    {
+        canvas[y + i][x - i] = '*';
+        canvas[y + i][x + i] = '*';
+    }
+
+    for(j = x - height + 1; j <= x + height - 1; j++)
+    {
+        canvas[y + height - 1][j] = '*';
+    }
+}
+void drawCircle(int cx, int cy, int radius)
+{
+    int x, y;
+
+    for(y = 0; y < ROWS; y++)
+    {
+        for(x = 0; x < COLS; x++)
+        {
+            int value =
+            (x - cx) * (x - cx) +
+            (y - cy) * (y - cy);
+
+            if(abs(value - radius * radius) <= radius)
+            {
+                canvas[y][x] = '*';
+            }
         }
     }
 }
