@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include<math.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include <math.h>
 #include "graphics.h"
+
 char canvas[ROWS][COLS];
 
 void initializeCanvas()
@@ -30,6 +31,7 @@ void displayCanvas()
         printf("\n");
     }
 }
+
 void drawRectangle(int x, int y, int width, int height)
 {
     int i, j;
@@ -46,6 +48,7 @@ void drawRectangle(int x, int y, int width, int height)
         }
     }
 }
+
 void drawLine(int x1, int y1, int x2, int y2)
 {
     int i;
@@ -65,6 +68,7 @@ void drawLine(int x1, int y1, int x2, int y2)
         }
     }
 }
+
 void drawTriangle(int x, int y, int height)
 {
     int i, j;
@@ -80,6 +84,7 @@ void drawTriangle(int x, int y, int height)
         canvas[y + height - 1][j] = '*';
     }
 }
+
 void drawCircle(int cx, int cy, int radius)
 {
     int x, y;
@@ -89,8 +94,8 @@ void drawCircle(int cx, int cy, int radius)
         for(x = 0; x < COLS; x++)
         {
             int value =
-            (x - cx) * (x - cx) +
-            (y - cy) * (y - cy);
+                (x - cx) * (x - cx) +
+                (y - cy) * (y - cy);
 
             if(abs(value - radius * radius) <= radius)
             {
